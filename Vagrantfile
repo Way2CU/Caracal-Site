@@ -4,14 +4,12 @@
 # Author: Mladen Mijatov
 
 Vagrant.configure('2') do |config|
-	config.vm.box = 'Caracal'
-	config.vm.box_url = 'hashicorp/precise32'
+	config.vm.box = 'hashicorp/precise32'
 
-	# directories to synchronize
+	# install web server and required components
+	config.vm.provision :shell, :path => 'bootstrap.sh', run:'once'
+
 	config.vm.synced_folder './data', '/var/www/data', create:true
-	config.vm.synced_folder './images', '/var/www/images', create:true
-	config.vm.synced_folder './styles', '/var/www/styles', create:true
-	config.vm.synced_folder './site', '/var/www/site', create:true
 
 	# configure network
 	config.vm.network :forwarded_port, host:8080, guest:80
