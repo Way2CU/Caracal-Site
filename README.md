@@ -8,18 +8,18 @@ Default Caracal site with predefined Vagrantfile for easy start.
 Branch `master` of this repository should only be used for improving development environment files. For regular site development it is paramount that you create your own branch. That said, the following steps need to be executed in order to get a new fully functional development environment for Caracal-based site:
 
 * [Create a new empty repository](https://github.com/repositories/new) on GitHub. This is where we will keep site-specific files, so name it according to site. For the sake of tutorial we'll call it `New-Site`;
-* Clone `Caracal-Site` repository to your local machine under `New-Site` name by issuing the following command:
+* Clone new repository to your local machine under `New-Site` name by issuing the following command:
 ```
-git clone git@github.com:Way2CU/Caracal-Site.git New-Site
+git clone git@github.com:You/New-Site.git New-Site
 ```
 * Go in to `New-Site` directory;
-* We need to rename `origin` to `upstream` so Git knows where to push things by default. You do that with following command:
+* We need to add [Caracal-Site](https://github.com/Way2CU/Caracal-Site) as `upstream` so Git knows where to pull things from. You do that with following command:
 ```
-git remote rename origin upstream
+git remote add upstream https://github.com/Way2CU/Caracal-Site.git
 ```
-* Now we need to create another `origin` point. Note that you need to replace `You` with your username;
+* We need to get `upstream` data. To do that issue the following command;
 ```
-git remote add origin git@github.com:You/New-Site.git
+git pull upstream master
 ```
 * Since we don't want to work on `master` branch we create `site` branch and switch to it:
 ```
