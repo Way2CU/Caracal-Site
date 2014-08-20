@@ -7,9 +7,10 @@ Vagrant.configure('2') do |config|
 	config.vm.box = 'hashicorp/precise32'
 
 	# install web server and required components
-	config.vm.provision :shell, :path => 'bootstrap.sh', run:'once'
+	config.vm.provision :shell, :path => 'provision.sh', keep_color: true, run:'once'
 
-	config.vm.synced_folder './data', '/var/www/data', create:true
+	# make sure caracal is up to date
+	config.vm.provision :shell, :inline => 'cd /var/www; git pull origin', keep_color: true, run:'always'
 
 	# configure network
 	config.vm.network :forwarded_port, host:8080, guest:80
