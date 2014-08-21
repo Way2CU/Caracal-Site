@@ -21,11 +21,6 @@ git remote add upstream https://github.com/Way2CU/Caracal-Site.git
 ```
 git pull upstream master
 ```
-* Since we don't want to work on `master` branch we create `site` branch and switch to it:
-```
-git branch site
-git checkout site
-```
 * Our new repository is ready, we can now push changes to GitHub:
 ```
 git push origin --all
@@ -38,3 +33,5 @@ We use Vagrant to set up our environment. Once preparation is done you will have
 vagrant up
 ```
 This should download, prepare and configure development environment for `New-Site`. This preparation can take a while depending on your network speed. Once preparation is done, additional files will appear in your directory. You can now start working on your new project.
+
+Suspending virtual environment is done with `vagrant suspend` and resumed with `vagrant resume`. Once development is completed virtual environment can be destroyed with `vagrant destroy` without affecting site files.
