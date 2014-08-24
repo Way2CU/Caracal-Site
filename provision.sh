@@ -30,7 +30,27 @@ echo phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2 | debconf-s
 apt-get -y install mysql-server
 
 # install the remaining part of the server stack
-apt-get -y install phpmyadmin libapache2-mod-php5 php5-curl git
+apt-get -y install phpmyadmin libapache2-mod-php5 php5-curl git python-pip
+
+# install tailon, retry 4 times, pip has a bug
+pip install tailon
+pip install tailon
+pip install tailon
+pip install tailon
+
+cat >/etc/init/tailon.conf <<EOL
+description	"Tailon Service"
+author		"Mladen Mijatov <mladen@way2cu.com>"
+
+start on runlevel [2345]
+stop on starting rc RUNLEVEL=[016]
+
+exec /usr/local/bin/tailon \
+-b :8080 \
+-f /var/log/apache2/error.log /var/log/apache2/access.log
+EOL
+
+service tailon start
 
 # clone caracal repository
 cd /var/www
