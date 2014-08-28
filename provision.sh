@@ -58,5 +58,9 @@ rm -Rf *
 git clone https://github.com/Way2CU/Caracal.git .
 git checkout develop
 
+# set access permissions
+chgrp www-data -R *
+chmod g+w /var/www/cache /var/www/modules/gallery/images /var/www/modules/gallery/thumbnails
+
 # link directories
 ln -s /vagrant /var/www/site
