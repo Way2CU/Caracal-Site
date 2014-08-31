@@ -6,8 +6,9 @@
 Vagrant.configure('2') do |config|
 	config.vm.box = 'hashicorp/precise32'
 
-	# set virtual machine name
+	# customize virtual machine
 	config.vm.provider 'virtualbox' do |vm|
+		# name our machine for easier management
 		path = File.dirname(__FILE__)
 		name = File.basename(path)
 
@@ -16,6 +17,10 @@ Vagrant.configure('2') do |config|
 		else
 			vm.name = name
 		end
+
+		# configure virtual machine resources
+		vm.memory = 256
+		vm.cpus = 1
 	end
 
 	# install web server and required components
