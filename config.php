@@ -7,6 +7,8 @@
  * file for Caracal located in `units/config.php`.
  */
 
+use Core\Cache\Type as CacheType;
+
 // document standard
 define('_STANDARD', 'html5');
 define('_TIMEZONE', 'America/New_York');
@@ -28,7 +30,7 @@ $db_config = array(
 	);
 
 // configure code generation
-$cache_enabled = false;
+$cache_method = CacheType::NONE;
 $optimize_code = false;
 $url_rewrite = false;
 
