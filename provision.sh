@@ -52,6 +52,11 @@ EOL
 
 service tailon start
 
+# fix broken sendfile support in VBox
+cd /etc/apache2/sites-enabled
+sed -i '/ServerAdmin/a EnableSendfile off' 000-default
+service apache2 restart
+
 # clone caracal repository
 cd /var/www
 rm -Rf *
