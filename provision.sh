@@ -55,6 +55,13 @@ service tailon start
 # fix broken sendfile support in VBox
 cd /etc/apache2/sites-enabled
 sed -i '/ServerAdmin/a EnableSendfile off' 000-default
+
+# load additional apache modules
+cd /etc/apache/mods-enabled
+ln -s ../mods-available/headers.load
+ln -s ../mods-available/rewrite.load
+
+# apply apache changes
 service apache2 restart
 
 # clone caracal repository
