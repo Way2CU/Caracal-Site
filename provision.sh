@@ -57,7 +57,7 @@ cd /etc/apache2/sites-enabled
 sed -i '/ServerAdmin/a EnableSendfile off' 000-default
 
 # load additional apache modules
-cd /etc/apache/mods-enabled
+cd /etc/apache2/mods-enabled
 ln -s ../mods-available/headers.load
 ln -s ../mods-available/rewrite.load
 
