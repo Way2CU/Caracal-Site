@@ -29,6 +29,9 @@ Vagrant.configure('2') do |config|
 	# make sure caracal is up to date
 	config.vm.provision :shell, :inline => 'cd /var/www; git pull origin', keep_color: true, run:'always'
 
+	# configure shared directories
+	config.vm.synced_folder '.', '/vagrant', group: 'www-data'
+
 	# configure network
 	config.vm.network :forwarded_port, host:8080, guest:80
 	config.vm.network :forwarded_port, host:8085, guest:8080
