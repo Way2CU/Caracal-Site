@@ -30,7 +30,7 @@ Vagrant.configure('2') do |config|
 	config.vm.provision :shell, :inline => 'cd /var/www; git pull origin', keep_color: true, run:'always'
 
 	# configure shared directories
-	config.vm.synced_folder '.', '/vagrant', owner: 'www-data', group: 'www-data'
+	config.vm.synced_folder 'site', '/vagrant', owner: 'www-data', group: 'www-data'
 
 	# configure network
 	config.vm.network :forwarded_port, host:8080, guest:80
