@@ -72,4 +72,4 @@ git clone https://github.com/Way2CU/Caracal.git .
 git checkout develop
 
 # link directories
-ln -s /vagrant /var/www/site
+ln -s /vagrant/site /var/www/site
