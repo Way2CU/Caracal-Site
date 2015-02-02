@@ -46,9 +46,9 @@ Site.is_mobile = function() {
 /**
  * Function called when document and images have been completely loaded.
  */
-Site.on_site_load = function() {
+Site.on_load = function() {
 };
 
 
 // connect document `load` event with handler function
-$(Site.on_site_load);
+$(Site.on_load);
