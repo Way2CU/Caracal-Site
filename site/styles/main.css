@@ -2,9 +2,11 @@
  * Main Style Sheet
  * Site Name
  *
- * Copyright (c) 2014. by Way2CU, http://way2cu.com
+ * Copyright (c) 2015. by Way2CU, http://way2cu.com
  * Authors:
  */
 
 body {
+	background-color: white;
+	color: black;
 }
