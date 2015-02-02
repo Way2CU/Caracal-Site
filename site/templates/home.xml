@@ -10,11 +10,6 @@
 
 		<body class="$language_rtl ? 'rtl' : 'ltr'" cms:eval="class">
 			<h1>It works!</h1>
-			<cms:module
-				name="contact_form"
-				action="show"
-				text_id="test"
-			/>
 		</body>
 	</html>
 </document>
