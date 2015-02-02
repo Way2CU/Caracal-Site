@@ -6,20 +6,20 @@
  * Authors:
  */
 
-var Caracal = Caracal || {};
+var Site = Site || {};
 
 
 /**
  * Check if site is being displayed on mobile.
  * @return boolean
  */
-Caracal.is_mobile = function() {
+Site.is_mobile = function() {
 	// make sure variable cache exists
-	Caracal.variable_cache = Caracal.variable_cache || {};
+	Site.variable_cache = Site.variable_cache || {};
 
 	// check for cached value
-	if ('mobile_version' in Caracal.variable_cache) {
-		var result = Caracal.variable_cache['mobile_version'];
+	if ('mobile_version' in Site.variable_cache) {
+		var result = Site.variable_cache['mobile_version'];
 
 	} else {
 		// detect if site is mobile
@@ -37,7 +37,7 @@ Caracal.is_mobile = function() {
 		}
 
 		// cache value so next time we are faster
-		Caracal.variable_cache['mobile_version'] = result;
+		Site.variable_cache['mobile_version'] = result;
 	}
 
 	return result;
@@ -46,9 +46,9 @@ Caracal.is_mobile = function() {
 /**
  * Function called when document and images have been completely loaded.
  */
-Caracal.on_site_load = function() {
+Site.on_site_load = function() {
 };
 
 
 // connect document `load` event with handler function
-$(Caracal.on_site_load);
+$(Site.on_site_load);
