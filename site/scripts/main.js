@@ -6,7 +6,11 @@
  * Authors:
  */
 
+// create or use existing site scope
 var Site = Site || {};
+
+// make sure variable cache exists
+Site.variable_cache = Site.variable_cache || {};
 
 
 /**
@@ -14,16 +18,14 @@ var Site = Site || {};
  * @return boolean
  */
 Site.is_mobile = function() {
-	// make sure variable cache exists
-	Site.variable_cache = Site.variable_cache || {};
+	var result = false;
 
 	// check for cached value
 	if ('mobile_version' in Site.variable_cache) {
-		var result = Site.variable_cache['mobile_version'];
+		result = Site.variable_cache['mobile_version'];
 
 	} else {
 		// detect if site is mobile
-		var result = false;
 		var elements = document.getElementsByName('viewport');
 
 		// check all tags and find `meta`
