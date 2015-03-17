@@ -68,8 +68,7 @@ service apache2 restart
 # clone caracal repository
 cd /var/www
 rm -Rf *
-git clone https://github.com/Way2CU/Caracal.git .
-git checkout develop
+git clone --recursive https://github.com/Way2CU/Caracal.git .
 
 # link directories
 ln -s /vagrant /var/www/site
