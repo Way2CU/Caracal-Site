@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE document SYSTEM "../units/schema/language.dtd">
-<document>
-	<language name="English" short="en" default="yes">
-		<constant name="site_title">Site title</constant>
-	</language>
-</document>
