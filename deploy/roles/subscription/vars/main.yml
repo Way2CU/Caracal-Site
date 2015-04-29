@@ -1,0 +1,2 @@
+---
+site_password: "{{ lookup('password', inventory_dir + '/credentials/' + site.domain + '/system_user.txt') }}"

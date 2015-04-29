@@ -1,0 +1,10 @@
+---
+- name: Remove cgi-bin directory
+  file: path={{site_directory}}/cgi-bin
+        state=absent
+
+- name: Cloning specified caracal branch
+  git: repo=https://github.com/Way2CU/Caracal.git
+        dest={{ site_directory }}
+        recursive=yes
+        force=yes

@@ -1,0 +1,13 @@
+---
+- name: Uploading site content
+  copy: src={{ local_site_directory }}
+        dest={{ site_directory }}
+
+- name: Updating configuration file
+  template: src=config.php
+            dest={{ site_directory }}/site/config.php
+
+- name: Creating cache directory
+  file: path={{ site_directory }}/site/cache
+        state=directory
+        mode=0775

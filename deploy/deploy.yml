@@ -1,0 +1,22 @@
+---
+- hosts: web-servers
+  remote_user: root
+
+  roles:
+    - subscription
+    - database
+    - caracal
+    - site
+
+  tasks:
+    - name: Detecting subscription owner and group
+      stat: path={{ site_directory }}
+      register: directory
+
+    - name: Setting owner and group for all files
+      file: path={{ site_directory }}
+            recurse=yes
+            state=directory
+            owner={{ directory.stat.pw_name }}
+            group={{ plesk_client_group }}
+      when: directory.stat.pw_name is defined

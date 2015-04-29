@@ -1,0 +1,11 @@
+---
+- name: Creating database for content management system
+  command: "{{ plesk_database }}
+      --create {{ database.name }}
+      -type {{ database.type }}
+      -domain {{ site.domain }}
+      -add_user {{ database.username }}
+      -passwd {{ database.password }}"
+  args:
+    chdir: "{{ plesk_command_directory }}"
+    creates: "{{ mysql_directory }}/{{ database.name }}"

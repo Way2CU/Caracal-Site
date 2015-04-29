@@ -1,0 +1,7 @@
+---
+database:
+  host: localhost
+  name: "{{ site.username }}_db"
+  username: "{{ site.username }}_user"
+  password: "{{ lookup('password', inventory_dir + '/credentials/' + site.domain + '/database.txt') }}"
+  type: mysql

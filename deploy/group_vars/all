@@ -1,0 +1,14 @@
+---
+site:
+  domain: sample.com
+  make_alias: true
+  root: httpdocs
+  username: "sample"
+  caracal_branch: develop
+  # ip_address: 0.0.0.0
+  # owner: Some Person
+  # plan: Unlimited
+
+local_site_directory: ../site
+subscription_directory: "{{ plesk_vhost_directory }}/{{ site.domain }}"
+site_directory: "{{ subscription_directory }}/{{ site.root }}"
