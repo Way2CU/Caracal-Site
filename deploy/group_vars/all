@@ -1,7 +1,7 @@
 ---
 site:
   domain: sample.com
-  make_alias: true
+  make_alias: false
   root: httpdocs
   username: "sample"
   caracal_branch: develop
