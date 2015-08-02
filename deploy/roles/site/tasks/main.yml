@@ -25,6 +25,36 @@
   copy: src={{ local_site_directory }}/templates
         dest={{ site_directory }}/site/templates
 
-- name: Updating configuration file
-  template: src=config.php
-            dest={{ site_directory }}/site/config.php
+- name: Uploading site configuration file
+  copy: src={{ local_site_directory }}/config.php
+        dest={{ site_directory }}/site/config.php
+
+- name: Configuring time zone
+  lineinfile: dest={{ site_directory }}/site/config.php
+              regexp=^define\('_timezone', '.*'\);
+              line=define('_timezone', '{{ timezone }}');
+
+- name: Configuring database host
+  lineinfile: dest={{ site_directory }}/site/config.php
+              backrefs=yes
+              regexp=^(\s+)'host'\s=>\s'.*',
+              line=\1'host' => '{{ database.host }}',
+
+- name: Configuring database username
+  lineinfile: dest={{ site_directory }}/site/config.php
+              backrefs=yes
+              regexp=^(\s+)'user'\s=>\s'.*',
+              line=\1'user' => '{{ database.username }}',
+
+- name: Configuring database password
+  lineinfile: dest={{ site_directory }}/site/config.php
+              backrefs=yes
+              regexp=^(\s+)'pass'\s=>\s'.*',
+              line=\1'pass' => '{{ database.password }}',
+
+- name: Configuring database name
+  lineinfile: dest={{ site_directory }}/site/config.php
+              backrefs=yes
+              regexp=^(\s+)'name'\s=>\s'.*'
+              line=\1'name' => '{{ database.name }}'
+
