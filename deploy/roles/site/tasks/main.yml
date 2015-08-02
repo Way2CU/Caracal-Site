@@ -10,19 +10,19 @@
         mode=0775
 
 - name: Uploading site data
-  copy: src={{ local_site_directory }}/site/data
+  copy: src={{ local_site_directory }}/data
         dest={{ site_directory }}/site/data
 
 - name: Uploading site scripts
-  copy: src={{ local_site_directory }}/site/scripts
+  copy: src={{ local_site_directory }}/scripts
         dest={{ site_directory }}/site/scripts
 
 - name: Uploading site styles
-  copy: src={{ local_site_directory }}/site/styles
+  copy: src={{ local_site_directory }}/styles
         dest={{ site_directory }}/site/styles
 
 - name: Uploading site templates
-  copy: src={{ local_site_directory }}/site/templates
+  copy: src={{ local_site_directory }}/templates
         dest={{ site_directory }}/site/templates
 
 - name: Updating configuration file
