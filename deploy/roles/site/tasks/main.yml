@@ -11,19 +11,19 @@
 
 - name: Uploading site data
   copy: src={{ local_site_directory }}/data
-        dest={{ site_directory }}/site/data
+        dest={{ site_directory }}/site
 
 - name: Uploading site scripts
   copy: src={{ local_site_directory }}/scripts
-        dest={{ site_directory }}/site/scripts
+        dest={{ site_directory }}/site
 
 - name: Uploading site styles
   copy: src={{ local_site_directory }}/styles
-        dest={{ site_directory }}/site/styles
+        dest={{ site_directory }}/site
 
 - name: Uploading site templates
   copy: src={{ local_site_directory }}/templates
-        dest={{ site_directory }}/site/templates
+        dest={{ site_directory }}/site
 
 - name: Uploading site configuration file
   copy: src={{ local_site_directory }}/config.php
