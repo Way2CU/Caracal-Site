@@ -31,8 +31,8 @@
 
 - name: Configuring time zone
   lineinfile: dest={{ site_directory }}/site/config.php
-              regexp=^define\('_timezone', '.*'\);
-              line=define('_timezone', '{{ timezone }}');
+              regexp=^define\('_TIMEZONE', '.*'\);
+              line=define('_TIMEZONE', '{{ timezone }}');
 
 - name: Configuring database host
   lineinfile: dest={{ site_directory }}/site/config.php
