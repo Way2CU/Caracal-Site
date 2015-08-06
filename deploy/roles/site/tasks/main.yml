@@ -29,17 +29,10 @@
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
 
-- local_action: stat path="{{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}"
-  register: backend_password_file
-
-- name: Generating backend password
-  local_action: shell "cat /usr/share/dict/words | perl -MList::Util -e 'print List::Util::shuffle <>' | head -n 3 | tr '\\n' ' ' > {{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}"
-  when: backend_password_file.stat.exists == False
-
 - name: Configuring backend password
   lineinfile: dest={{ site_directory }}/site/data/system_init.xml
               regexp="^\s*password=\"\""
-              line="		password=\"{{ lookup('file', inventory_dir + '/credentials/' + site.domain + '/backend.txt') }}\""
+              line="		password=\"{{ lookup('password', inventory_dir + '/credentials/' + site.domain + '/backend.txt') }}\""
 
 - name: Configuring time zone
   lineinfile: dest={{ site_directory }}/site/config.php
