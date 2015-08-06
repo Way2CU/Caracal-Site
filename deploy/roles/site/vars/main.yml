@@ -1,2 +1,2 @@
 ---
-backend_password: "{{ lookup('pipe', 'cat /usr/share/dict/words | perl -MList::Util -e \"print List::Util::shuffle <>\" | head -n 3 | tr \"\\n\" \" \"' }}"
+backend_password: "{{ lookup('pipe', 'cat /usr/share/dict/words | perl -MList::Util -e \"print List::Util::shuffle <>\" | head -n 3 | tr \"\\n\" \" \"') }}"
