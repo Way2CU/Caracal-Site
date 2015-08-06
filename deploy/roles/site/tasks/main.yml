@@ -33,7 +33,7 @@
   register: backend_password_file
 
 - name: Generating backend password
-  command: {{ cat /usr/share/dict/words | perl -MList::Util -e "print List::Util::shuffle <>" | head -n 3 | tr "\\n" " " > inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}
+  command: cat /usr/share/dict/words | perl -MList::Util -e 'print List::Util::shuffle <>' | head -n 3 | tr '\\n' ' ' > {{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}
   when: backend_password_file.stat.exists == False
 
 - name: Configuring backend password
