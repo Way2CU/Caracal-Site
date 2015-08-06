@@ -29,7 +29,7 @@
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
 
-- stat: "{{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}"
+- stat: path="{{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}"
   register: backend_password_file
 
 - name: Generating backend password
