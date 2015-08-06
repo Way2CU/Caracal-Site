@@ -29,6 +29,11 @@
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
 
+- name: Making sure backend password is not empty
+  lineinfile: dest={{ site_directory }}/data/system_init.xml
+              regexp="^\s*password=\"\""
+              line="		password=\"{{ backend_password }}\""
+
 - name: Configuring time zone
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^define\('_TIMEZONE', '.*'\);"
