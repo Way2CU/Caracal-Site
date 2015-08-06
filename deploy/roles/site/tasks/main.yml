@@ -30,7 +30,7 @@
         dest={{ site_directory }}/site/config.php
 
 - name: Making sure backend password is not empty
-  lineinfile: dest={{ site_directory }}/data/system_init.xml
+  lineinfile: dest={{ site_directory }}/site/data/system_init.xml
               regexp="^\s*password=\"\""
               line="		password=\"{{ backend_password }}\""
 
