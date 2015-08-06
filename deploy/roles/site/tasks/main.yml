@@ -29,16 +29,17 @@
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
 
-- name: Making sure backend password is not empty
+- stat: {{ inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}
+  register: backend_password_file
+
+- name: Generating backend password
+  command: {{ cat /usr/share/dict/words | perl -MList::Util -e "print List::Util::shuffle <>" | head -n 3 | tr "\\n" " " > inventory_dir + '/credentials/' + site.domain + '/backend.txt' }}
+  when: backend_password_file.stat.exists == False
+
+- name: Configuring backend password
   lineinfile: dest={{ site_directory }}/site/data/system_init.xml
               regexp="^\s*password=\"\""
-              line="		password=\"{{ backend_password }}\""
-  register: saved_backend_password
-
-- name: Storing backend password to inventory
-  copy: content={{ backend_password }}
-        dest=inventory_dir + '/credentials/' + site.domain + '/backend.txt'
-  when: saved_backend_password|success
+              line="		password=\"{{ lookup('file', inventory_dir + '/credentials/' + site.domain + '/backend.txt') }}\""
 
 - name: Configuring time zone
   lineinfile: dest={{ site_directory }}/site/config.php
