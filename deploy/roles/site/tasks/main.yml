@@ -36,7 +36,7 @@
 - name: Configuring backend password
   lineinfile: dest={{ site_directory }}/site/data/system_init.xml
               regexp="^\s*password=\"\""
-              line="		password=\"{{ lookup('password', inventory_dir + '/credentials/' + site.domain + '/backend.txt') }}\""
+              line="		password=\"{{ backend_password }}\""
 
 - name: Configuring time zone
   lineinfile: dest={{ site_directory }}/site/config.php
