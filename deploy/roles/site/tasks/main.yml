@@ -25,6 +25,10 @@
   copy: src={{ local_site_directory }}/templates
         dest={{ site_directory }}/site
 
+- name: Uploading site images
+  copy: src={{ local_site_directory }}/images
+        dest={{ site_directory }}/site
+
 - name: Uploading site configuration file
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
