@@ -58,8 +58,14 @@
               regexp="^\s+'pass'\s=>\s'.*',"
               line="		'pass' => '{{ database.password }}',"
 
-- name: Configuring database name
+- name: Configuring database name for domain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'name'\s=>\s'.*'"
               line="		'name' => '{{ database.name }}'"
+  when: site.subdomain is not defined
 
+- name: Configuring database name for subdomain
+  lineinfile: dest={{ site_directory }}/site/config.php
+              regexp="^\s+'name'\s=>\s'.*'"
+              line="		'name' => '{{ database.sub_name }}'"
+  when: site.subdomain is defined
