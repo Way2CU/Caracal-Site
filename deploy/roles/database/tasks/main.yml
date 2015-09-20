@@ -20,5 +20,5 @@
       -passwd {{ database.password }}"
   args:
     chdir: "{{ plesk_command_directory }}"
-    creates: "{{ mysql_directory }}/{{ database.name }}"
+    creates: "{{ mysql_directory }}/{{ database.sub_name }}"
   when: site.subdomain is defined
