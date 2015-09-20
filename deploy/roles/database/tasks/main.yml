@@ -1,5 +1,5 @@
 ---
-- name: Creating database for content management system
+- name: Creating database for domain content management system
   command: "{{ plesk_database }}
       --create {{ database.name }}
       -type {{ database.type }}
@@ -9,3 +9,16 @@
   args:
     chdir: "{{ plesk_command_directory }}"
     creates: "{{ mysql_directory }}/{{ database.name }}"
+  when: site.subdomain is not defined
+
+- name: Creating database for subdomain content management system
+  command: "{{ plesk_database }}
+      --create {{ database.sub_name }}
+      -type {{ database.type }}
+      -domain {{ site.domain }}
+      -add_user {{ database.username }}
+      -passwd {{ database.password }}"
+  args:
+    chdir: "{{ plesk_command_directory }}"
+    creates: "{{ mysql_directory }}/{{ database.name }}"
+  when: site.subdomain is defined
