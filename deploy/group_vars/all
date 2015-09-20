@@ -1,6 +1,7 @@
 ---
 site:
   domain: sample.com
+  # subdomain: test
   make_alias: false
   root: httpdocs
   username: "sample"

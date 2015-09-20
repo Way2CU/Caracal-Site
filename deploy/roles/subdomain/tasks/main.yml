@@ -1,0 +1,11 @@
+---
+- name: Creating subdomain
+  command: "{{ plesk_subdomain }}
+      --create {{ site.subdomain }}
+      -domain '{{ site.domain }}'
+      -www-root '{{ site.root }}'
+      -php true"
+  args:
+    chdir: "{{ plesk_command_directory }}"
+    creates: "{{ site_directory }}"
+  when: site.subdomain is defined

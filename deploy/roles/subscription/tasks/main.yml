@@ -1,7 +1,7 @@
 ---
 - name: Creating new subscription
   command: "{{ plesk_subscription }}
-      --create {{ site.domain }}
+      --create '{{ site.domain }}'
       -owner '{{ site.owner | default(default_owner) }}'
       -service_plan '{{ site.plan | default(default_plan) }}'
       -ip {{ site.ip_address | default(default_ip_address) }}
