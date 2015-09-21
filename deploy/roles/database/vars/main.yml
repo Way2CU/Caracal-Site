@@ -1,8 +1,8 @@
 ---
 database:
   host: localhost
-  name: "{{ site.username }}_db"
-  sub_name: "{{ site.username }}_{{ site.subdomain | default('subdomain') }}_db"
-  username: "{{ site.username }}_user"
+  name: "{{ site.domain }}_db"
+  sub_name: "{{ site.domain }}_{{ site.subdomain | default('sub') }}_db"
+  username: "{{ site.domain }}_user"
   password: "{{ lookup('password', playbook_dir + '/credentials/' + site.domain + '/database.txt chars=ascii_letters,digits length=20') }}"
   type: mysql
