@@ -4,5 +4,5 @@ database:
   name: "{{ site.domain.replace('.', '_') }}"
   sub_name: "{{ site.domain.replace('.', '_') }}_{{ site.subdomain | default('sub') }}"
   username: "{{ site.domain.replace('.', '_') }}"
-  password: "{{ lookup('password', playbook_dir + '/credentials/' + site.domain + '/database.txt chars=ascii_letters,digits length=20') }}"
+  password: "{{ lookup('password', playbook_dir + '/credentials/database.txt chars=ascii_letters,digits length=20') }}"
   type: mysql
