@@ -9,6 +9,11 @@
         state=directory
         mode=0775
 
+- name: Clear cache directory
+  command: rm -f *
+  args:
+    chdir: "{{ site_directory }}/site/cache"
+
 - name: Uploading site data
   copy: src={{ local_site_directory }}/data
         dest={{ site_directory }}/site
