@@ -22,6 +22,10 @@
   copy: src={{ local_site_directory }}/scripts
         dest={{ site_directory }}/site
 
+- name: Uploading site speciffic modules
+  copy: src={{ local_site_directory }}/modules
+        dest={{ site_directory }}/site
+
 - name: Uploading site styles
   copy: src={{ local_site_directory }}/styles
         dest={{ site_directory }}/site
