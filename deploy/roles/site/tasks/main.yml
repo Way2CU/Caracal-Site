@@ -14,6 +14,23 @@
   args:
     chdir: "{{ site_directory }}/site/cache"
 
+
+- name: Check if site scripts need to be uploaded
+  local_action: stat path={{ local_site_directory }}/scripts
+  register: scripts_directory
+  ignore_errors: True
+
+- name: Check if site modules need to be uploaded
+  local_action: stat path={{ local_site_directory }}/modules
+  register: modules_directory
+  ignore_errors: True
+
+- name: Check if site images need to be uploaded
+  local_action: stat path={{ local_site_directory }}/images
+  register: images_directory
+  ignore_errors: True
+
+
 - name: Uploading site data
   copy: src={{ local_site_directory }}/data
         dest={{ site_directory }}/site
@@ -21,10 +38,12 @@
 - name: Uploading site scripts
   copy: src={{ local_site_directory }}/scripts
         dest={{ site_directory }}/site
+  when: scripts_directory.stat.exists
 
 - name: Uploading site speciffic modules
   copy: src={{ local_site_directory }}/modules
         dest={{ site_directory }}/site
+  when: modules_directory.stat.exists
 
 - name: Uploading site styles
   copy: src={{ local_site_directory }}/styles
@@ -37,10 +56,12 @@
 - name: Uploading site images
   copy: src={{ local_site_directory }}/images
         dest={{ site_directory }}/site
+  when: images_directory.stat.exists
 
 - name: Uploading site configuration file
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
+
 
 - name: Configuring backend password
   lineinfile: dest={{ site_directory }}/site/data/system_init.xml
