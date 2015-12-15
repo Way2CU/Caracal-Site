@@ -1,2 +1,2 @@
 ---
-backend_password: "{{ lookup('password', playbook_dir + '/credentials/backend.txt chars=ascii_letters,digits length=20') }}"
+backend_password: "{{ lookup('pipe', playbook_dir + '/credentials.py ' + site.subdomain|default('') + ' ' + site.domain + ' Backend') }}"

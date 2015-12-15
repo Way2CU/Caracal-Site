@@ -3,5 +3,5 @@ database:
   host: localhost
   name: "{{ site.domain.replace('.', '_') }}"
   sub_name: "{{ site.domain.replace('.', '_') }}_{{ site.subdomain | default('sub') }}"
-  password: "{{ lookup('password', playbook_dir + '/credentials/database.txt chars=ascii_letters,digits length=20') }}"
+  password: "{{ lookup('pipe', playbook_dir + '/credentials.py ' + site.subdomain|default('') + ' ' + site.domain + ' Database') }}"
   type: "{{ site.database_type | default('mysql') }}"
