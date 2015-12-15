@@ -66,7 +66,12 @@ def generate_password(path):
 		sys.exit(1)
 
 	else:
-		result = output[0]
+		data = output[0].splitlines()
+		if len(data) >= 2:
+			result = data[1]
+
+		else:
+			sys.exit(1)
 
 	return result
 
