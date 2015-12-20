@@ -59,7 +59,7 @@ def generate_password(path):
 
 	# create and communicate with process
 	try:
-		process = Popen(['pass', 'generate', path, PASSWORD_SIZE], env=PASS_ENVIRONMENT, stdout=PIPE)
+		process = Popen(['pass', 'generate', path, str(PASSWORD_SIZE)], env=PASS_ENVIRONMENT, stdout=PIPE)
 		output = process.communicate()
 
 	except OSError:
@@ -68,7 +68,7 @@ def generate_password(path):
 	else:
 		data = output[0].splitlines()
 		if len(data) >= 2:
-			result = data[1]
+			result = data[-1]
 
 		else:
 			sys.exit(1)
