@@ -59,7 +59,7 @@ def generate_password(path):
 
 	# create and communicate with process
 	try:
-		process = Popen(['pass', 'generate', path, str(PASSWORD_SIZE)], env=PASS_ENVIRONMENT, stdout=PIPE)
+		process = Popen(['pass', 'generate', '-n', path, str(PASSWORD_SIZE)], env=PASS_ENVIRONMENT, stdout=PIPE)
 		output = process.communicate()
 
 	except OSError:
