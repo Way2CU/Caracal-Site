@@ -79,6 +79,7 @@
   copy: src={{ local_site_directory }}/gallery/images
         dest={{ site_directory }}/site/gallery
         mode=0775
+        force=no
   when: gallery_directory.stat.exists
 
 - name: Uploading site configuration file
