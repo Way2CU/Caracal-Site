@@ -4,7 +4,7 @@
       --create {{ database.name }}
       -type {{ database.type }}
       -domain {{ site.domain }}
-      -add_user {{ database.name }}
+      -add_user {{ site.username }}
       -passwd {{ database.password }}"
   args:
     chdir: "{{ plesk_command_directory }}"
@@ -16,7 +16,7 @@
       --create {{ database.sub_name }}
       -type {{ database.type }}
       -domain {{ site.domain }}
-      -add_user {{ database.sub_name }}
+      -add_user {{ site.username }}
       -passwd {{ database.password }}"
   args:
     chdir: "{{ plesk_command_directory }}"
