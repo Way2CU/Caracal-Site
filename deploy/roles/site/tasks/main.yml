@@ -104,13 +104,13 @@
 - name: Configuring database username for domain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'user'\s=>\s'.*',"
-              line="		'user' => '{{ database.name }}',"
+              line="		'user' => '{{ site.username }}',"
   when: site.subdomain is not defined
 
 - name: Configuring database username for subdomain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'user'\s=>\s'.*',"
-              line="		'user' => '{{ database.sub_name }}',"
+              line="		'user' => '{{ site.username }}',"
   when: site.subdomain is defined
 
 - name: Configuring database password
