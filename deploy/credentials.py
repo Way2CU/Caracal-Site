@@ -67,15 +67,19 @@ def generate_password(path):
 	except OSError:
 		sys.exit(1)
 
-	else:
-		data = output[0].splitlines()
-		if len(data) >= 2:
-			result = data[-1]
+	# We have to do this since password store prints color codes regardless of
+	# terminal configuration, thus causing problems with storing password.
+	#
+	# else:
+	# 	data = output[0].splitlines()
+	# 	if len(data) >= 2:
+	# 		result = data[-1]
 
-		else:
-			sys.exit(1)
+	# 	else:
+	# 		sys.exit(1)
 
-	return result
+	# temporary fix with getting right password
+	return retrieve_password(path)
 
 def retrieve_password(path):
 	"""Retrieve password for specified domain."""
