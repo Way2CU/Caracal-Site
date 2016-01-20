@@ -29,8 +29,10 @@ REPOSITORY_PATH = os.path.join(user.home, '.password-store', 'Way2CU')
 # prepare environment
 PASS_ENVIRONMENT = os.environ.copy()
 PASS_ENVIRONMENT.update({
-		'PASSWORD_STORE_DIR': REPOSITORY_PATH
+		'PASSWORD_STORE_DIR': REPOSITORY_PATH,
+		'TERM': 'vt220'
 	})
+del PASS_ENVIRONMENT['LS_COLORS']
 
 
 def pull_repository_passwords():
