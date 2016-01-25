@@ -32,7 +32,9 @@ PASS_ENVIRONMENT.update({
 		'PASSWORD_STORE_DIR': REPOSITORY_PATH,
 		'TERM': 'vt220'
 	})
-del PASS_ENVIRONMENT['LS_COLORS']
+
+if 'LS_COLORS' in PASS_ENVIRONMENT:
+	del PASS_ENVIRONMENT['LS_COLORS']
 
 
 def pull_repository_passwords():
