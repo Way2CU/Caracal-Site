@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# add mirrors for faster download
+cat >/tmp/sources.list <<EOL
+deb mirror://mirrors.ubuntu.com/mirrors.txt precise main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt precise-updates main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt precise-backports main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt precise-security main restricted universe multiverse
+EOL
+
+cat /etc/apt/sources.list >> /tmp/sources.list
+mv /tmp/sources.list /etc/apt/sources.list
+
 # make sure we are not asked any questions
 export DEBIAN_FRONTEND=noninteractive
 
@@ -42,8 +53,9 @@ EOL
 service tailon start
 
 # fix broken sendfile support in VBox
-sed -i '/ServerAdmin/a EnableSendfile off' /etc/apache2/sites-enabled/000-default.conf
-sed -i '/Directory \/var\/www/!b;n;n;cAllowOverride all' /etc/apache2/apache2.conf
+cd /etc/apache2/sites-enabled
+sed -i '/ServerAdmin/a EnableSendfile off' 000-default
+sed -i '0,/AllowOverride/! s/AllowOverride None/AllowOverride All/' 000-default
 
 # load additional apache modules
 cd /etc/apache2/mods-enabled
@@ -54,9 +66,9 @@ ln -s ../mods-available/rewrite.load
 service apache2 restart
 
 # clone caracal repository
-cd /var/www/html
+cd /var/www
 rm -Rf *
 git clone --recursive https://github.com/Way2CU/Caracal.git .
 
 # link directories
-ln -s /vagrant /var/www/html/site
+ln -s /vagrant /var/www/site
