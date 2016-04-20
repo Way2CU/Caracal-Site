@@ -4,7 +4,7 @@
 # Author: Mladen Mijatov
 
 Vagrant.configure('2') do |config|
-	config.vm.box = 'hashicorp/precise32'
+	config.vm.box = 'ubuntu/trusty32'
 
 	# customize virtual machine
 	config.vm.provider 'virtualbox' do |vm|
@@ -27,7 +27,7 @@ Vagrant.configure('2') do |config|
 	config.vm.provision :shell, :path => 'provision.sh', keep_color: true, run:'once'
 
 	# make sure caracal is up to date
-	config.vm.provision :shell, :inline => 'cd /var/www; git pull origin', keep_color: true, run:'always'
+	config.vm.provision :shell, :inline => 'cd /var/www/html; git pull origin', keep_color: true, run:'always'
 
 	# configure shared directories
 	config.vm.synced_folder 'site', '/vagrant', owner: 'www-data', group: 'www-data'
