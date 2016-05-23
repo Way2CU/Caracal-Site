@@ -118,6 +118,12 @@
               regexp="^\s+'pass'\s=>\s'.*',"
               line="		'pass' => '{{ database.password }}',"
 
+
+- name: Enabling code optimization
+  lineinfile: dest={{ site_directory }}/site/config.php
+              regexp="^\s+$optimize_code\s=\s.*;"
+              line="$optimize_code = true;"
+
 - name: Configuring database name for domain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'name'\s=>\s'.*'"
