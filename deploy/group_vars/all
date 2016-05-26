@@ -2,7 +2,7 @@
 site:
   domain: sample.com
   # subdomain: test
-  make_alias: false
+  # alias: domain.com
   root: httpdocs
   username: sample
   caracal_branch: develop

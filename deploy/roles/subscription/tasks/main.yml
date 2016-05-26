@@ -24,7 +24,7 @@
 
 - name: Creating domain alias
   command: "{{ plesk_alias }}
-      --create {{ site.username }}.{{ server_domain }}
+      --create {{ site.alias }}
       -domain {{ site.domain }}
       -seo-redirect none"
-  when: site.ip_address is defined and site.make_alias and site.ip_address == default_ip_address
+  when: site.alias is defined
