@@ -19,7 +19,7 @@ Vagrant.configure('2') do |config|
 		end
 
 		# configure virtualization options
-		vm.customize [ "--paravirtprovider", "kvm" ]
+		vm.customize [ "modifyvm", :id, "--paravirtprovider", "kvm" ]
 
 		# configure virtual machine resources
 		vm.memory = 256
