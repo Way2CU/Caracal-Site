@@ -69,6 +69,7 @@ service apache2 restart
 cd /var/www
 rm -Rf *
 git clone --recursive https://github.com/Way2CU/Caracal.git .
+git checkout release
 
 # link directories
 ln -s /vagrant /var/www/site
