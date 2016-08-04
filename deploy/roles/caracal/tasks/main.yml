@@ -8,3 +8,4 @@
         dest={{ site_directory }}
         recursive=yes
         force=yes
+        version="{{ site.caracal_branch }}"
