@@ -85,6 +85,7 @@
 - name: Uploading site configuration file
   copy: src={{ local_site_directory }}/config.php
         dest={{ site_directory }}/site/config.php
+  when: database is defined and timezone is defined
 
 - name: Configuring backend password
   lineinfile: dest={{ site_directory }}/site/data/system_init.xml
@@ -95,28 +96,31 @@
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^define\('_TIMEZONE', '.*'\);"
               line="define('_TIMEZONE', '{{ timezone }}');"
+  when: timezone is defined
 
 - name: Configuring database host
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'host'\s=>\s'.*',"
               line="		'host' => '{{ database.host }}',"
+  when: database is defined
 
 - name: Configuring database username for domain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'user'\s=>\s'.*',"
               line="		'user' => '{{ database.username }}',"
-  when: site.subdomain is not defined
+  when: database is defined and site.subdomain is not defined
 
 - name: Configuring database username for subdomain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'user'\s=>\s'.*',"
               line="		'user' => '{{ database.username }}',"
-  when: site.subdomain is defined
+  when: database is defined and site.subdomain is defined
 
 - name: Configuring database password
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'pass'\s=>\s'.*',"
               line="		'pass' => '{{ database.password }}',"
+  when: database is defined
 
 - name: Enabling code optimization
   lineinfile: dest={{ site_directory }}/site/config.php
@@ -127,10 +131,10 @@
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'name'\s=>\s'.*'"
               line="		'name' => '{{ database.name }}'"
-  when: site.subdomain is not defined
+  when: database is defined and site.subdomain is not defined
 
 - name: Configuring database name for subdomain
   lineinfile: dest={{ site_directory }}/site/config.php
               regexp="^\s+'name'\s=>\s'.*'"
               line="		'name' => '{{ database.sub_name }}'"
-  when: site.subdomain is defined
+  when: database is defined and site.subdomain is defined
