@@ -4,11 +4,6 @@
         state=directory
         mode=0775
 
-- name: Creating cache directory
-  file: path={{ site_directory }}/site/cache
-        state=directory
-        mode=0775
-
 - name: Clear cache directory
   file: path="{{ site_directory }}/site/cache/"
         state=absent
