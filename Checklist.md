@@ -1,6 +1,6 @@
 # Deployment checklist
 
-All of these need to be checked manually, changed and then committed. System will refuse to deploy the site if some of the checkboxes are left empty. To keep things consistent items that were checked and found to be okay developer needs to mark with `x` while items that don't apply need to be marked with `-`.
+All of these need to be checked manually, changed and then committed. System will refuse to deploy the site if some of the checkboxes are left empty. To keep things consistent items that were checked and found to be okay developer needs to mark with `x` while items that don't apply need to be marked with `x` and list item prepended with `>`.
 
 - Site specific items:
 	- [ ] `system_init.xml` file contains all the modules used;
