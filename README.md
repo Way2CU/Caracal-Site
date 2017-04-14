@@ -1,11 +1,10 @@
-Caracal-Site
-============
+# Caracal-Site
 
 Default Caracal site with predefined Vagrantfile for easy start.
 
 ### Preparation
 
-Branch `master` of this repository should only be used for improving development environment files. For regular site development it is paramount that you create your own branch. That said, the following steps need to be executed in order to get a new fully functional development environment for Caracal-based site:
+The following steps need to be executed in order to get a new fully functional development environment for Caracal-based site:
 
 * [Create a new empty repository](https://github.com/repositories/new) on GitHub. This is where we will keep site-specific files, so name it according to site. For the sake of tutorial we'll call it `New-Site`;
 * Clone new repository to your local machine under `New-Site` name by issuing the following command:
