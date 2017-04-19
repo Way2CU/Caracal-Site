@@ -4,3 +4,5 @@
       domains-name '{{ site.domain }}'
       --description
       --incremental='Backup before deployment.'"
+  args:
+    chdir: "{{ plesk_command_directory }}"
