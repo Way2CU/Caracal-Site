@@ -5,6 +5,7 @@
   roles:
     - subscription
     - database
+    - backup
     - caracal
     - site
 
