@@ -2,6 +2,11 @@
 
 All of these need to be checked manually, changed and then committed. System will refuse to deploy the site if some of the checkboxes are left empty. To keep things consistent items that were checked and found to be okay developer needs to mark with `x` while items that don't apply need to be marked with `x` and list item prepended with `>`.
 
+- Optimization:
+	- [ ] PNG images are optimized using `optipng` command;
+	- [ ] JPEG images are converted from original PNG and optimized using `guetzli` command;
+	- [ ] SVG images are cleaned and optimized;
+	- [ ] Make sure site scores 95+ on Page Speed Insights (ideally 100);
 - Site specific items:
 	- [ ] `system_init.xml` file contains all the modules used;
 	- [ ] Deployment script `group_vars/all` file is configured;
@@ -10,9 +15,6 @@ All of these need to be checked manually, changed and then committed. System wil
 	- [ ] Site title is properly defined;
 	- [ ] No errors or warnings are reported in the log file;
 	- [ ] Templates for registering and recovering user password are created and selected;
-	- [ ] PNG images are optimized using `optipng` command;
-	- [ ] JPEG images are converted from original PNG and optimized using `guetzli` command;
-	- [ ] SVG images are cleaned and optimized;
 	- [ ] Site has favicon specified in different sizes (16, 32, 64);
 	- [ ] All active elements of the site have `:hover` and `:focus` styles defined;
 	- [ ] Site has copyright;
