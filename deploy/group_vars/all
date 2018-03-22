@@ -10,6 +10,7 @@ site:
   # owner: Some Person
   # plan: Unlimited
   # database_type: 'mysql'
+  # lets_encrypt: 'person@host.com'
 
 local_site_directory: ../site
 subscription_directory: "{{ plesk_vhost_directory }}/{{ site.domain }}"
