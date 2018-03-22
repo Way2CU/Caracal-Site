@@ -28,3 +28,14 @@
       -domain {{ site.domain }}
       -seo-redirect none"
   when: site.alias is defined
+
+- name: Detecting whether Let's Encrypt certificate is installed
+  stat: path="{{ lets_encrypt_directory }}/{{ site.domain }}"
+  register: lets_encrypt_present
+  when: site.lets_encrypt is defined
+
+- name: Installing security certificate from Let's Encrypt
+  command: "{{ lets_encrypt_command }}
+      --email {{ site.lets_encrypt }}
+      --domain {{ site.domain }}"
+  when: site.lets_encrypt is defined and lets_encrypt_present is not defined
