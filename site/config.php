@@ -18,7 +18,7 @@ $available_languages = array('en');
 $default_language = 'en';
 
 // default session options
-$session_type = Core\Cache\Type::BROWSER;
+$session_type = Core\Session\Type::BROWSER;
 
 // database
 $db_type = DatabaseType::MYSQL;
