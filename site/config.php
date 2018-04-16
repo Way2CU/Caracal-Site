@@ -21,7 +21,7 @@ $available_languages = array('en');
 $default_language = 'en';
 
 // default session options
-$session_type = SessionType::BROWSER;
+$session_type = Core\Session\Type::BROWSER;
 
 // database
 $db_type = DatabaseType::MYSQL;
@@ -33,7 +33,7 @@ $db_config = array(
 	);
 
 // configure code generation
-$cache_method = CacheType::NONE;
+$cache_method = Core\Cache\Type::NONE;
 $optimize_code = false;
 $include_styles = true;
 $url_rewrite = true;
