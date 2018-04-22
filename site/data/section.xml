@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE document SYSTEM "../units/schema/section.dtd">
-<document>
-	<section name="home">
-		<language name="all" file="home.xml" />
-	</section>
-</document>

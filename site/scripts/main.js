@@ -2,7 +2,7 @@
  * Main JavaScript
  * Site Name
  *
- * Copyright (c) 2015. by Way2CU, http://way2cu.com
+ * Copyright (c) 2018. by Way2CU, http://way2cu.com
  * Authors:
  */
 
@@ -55,4 +55,4 @@ Site.on_load = function() {
 
 
 // connect document `load` event with handler function
-$(Site.on_load);
+window.addEventListener('load', Site.on_load);
