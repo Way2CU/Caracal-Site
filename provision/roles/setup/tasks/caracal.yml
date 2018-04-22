@@ -1,0 +1,13 @@
+---
+- name: Clone Caracal repository
+  git:
+    repo: https://github.com/Way2CU/Caracal.git
+    dest: /var/www/html
+    version: "{{site.caracal_branch}}"
+    recursive: yes
+
+- name: Link site directory to Caracal
+  file:
+    src: /vagrant/site/
+    dest: /var/www/html/site
+    state: link

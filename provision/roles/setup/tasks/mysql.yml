@@ -1,0 +1,31 @@
+- name: Install MySQL server
+  apt: name=mysql-server state=latest
+
+- name: Change password for root user
+  mysql_user:
+    name: "{{ database_user }}"
+    host: "{{ item }}"
+    password: "{{ database_password }}"
+    login_user: "{{ database_user }}"
+    login_password: "{{ database_password }}"
+    priv: "*.*:ALL,GRANT"
+    check_implicit_admin: yes
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Install phpMyAdmin
+  apt: name=phpmyadmin state=latest
+  notify: reload apache2
+
+- name: Ensure phpMyAdmin config file is included in Apache config
+  lineinfile:
+    dest: /etc/apache2/apache2.conf
+    state: present
+    regexp: "^Include.+phpmyadmin.+$"
+    line: "Include /etc/phpmyadmin/apache.conf"
+    insertafter: "EOF"
+  notify: reload apache2
+

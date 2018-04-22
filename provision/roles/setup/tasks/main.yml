@@ -1,0 +1,5 @@
+---
+- import_tasks: apache.yml
+- import_tasks: mysql.yml
+- import_tasks: php.yml
+- import_tasks: caracal.yml

@@ -1,0 +1,11 @@
+---
+- name: Instaling PHP
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - php5-mysqlnd
+    - php5-gd
+    - php5-memcached
+  notify:
+    - reload apache2
