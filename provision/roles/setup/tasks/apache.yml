@@ -1,0 +1,26 @@
+---
+- name: Install Apache web server
+  apt:
+    name=apache2
+    state=present
+
+- name: Install Apache modules
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libapache2-mod-php5
+
+- name: Enable Apache modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - rewrite
+    - headers
+  notify: reload apache2
+
+- name: Remove default index file
+  file:
+      state: absent
+      path: /var/www/html/index.html
