@@ -1,5 +1,8 @@
 .vagrant
 .DS_Store
+deploy/*.retry
+provision/*.retry
+site/cache/
 site/gallery/
 site/videos/
 site/downloads/
