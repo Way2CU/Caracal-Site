@@ -36,6 +36,9 @@ Vagrant.configure('2') do |config|
 		}
 	end
 
+	# configure synchronized folder to specific user
+	config.vm.synced_folder 'site', '/vagrant', owner: 'www-data', group: 'www-data'
+
 	# configure network
 	config.vm.network :forwarded_port, host:8080, guest:80
 end
