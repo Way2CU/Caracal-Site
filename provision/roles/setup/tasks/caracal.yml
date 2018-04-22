@@ -8,6 +8,6 @@
 
 - name: Link site directory to Caracal
   file:
-    src: /vagrant/site/
+    src: /vagrant/
     dest: /var/www/html/site
     state: link
