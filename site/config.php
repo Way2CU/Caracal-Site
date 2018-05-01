@@ -7,6 +7,7 @@
  * file for Caracal located in `units/config.php`.
  */
 
+use Core\CSP;
 use Core\Cache\Type as CacheType;
 
 // document standard
@@ -31,6 +32,9 @@ $db_config = array(
 		'pass' => 'caracal',
 		'name' => 'web_engine'
 	);
+
+// allow loading scripts from different domain
+/* CSP\Parser::add_value(CSP\Element::SCRIPTS, 'domain.com'); */
 
 // configure code generation
 $cache_method = Core\Cache\Type::NONE;
