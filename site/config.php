@@ -8,7 +8,9 @@
  */
 
 use Core\CSP;
+use Core\CORS\Manager as CORS;
 use Core\Cache\Type as CacheType;
+use Core\Session\Type as SessionType;
 
 // document standard
 define('_STANDARD', 'html5');
@@ -22,7 +24,7 @@ $available_languages = array('en');
 $default_language = 'en';
 
 // default session options
-$session_type = Core\Session\Type::BROWSER;
+$session_type = SessionType::BROWSER;
 
 // database
 $db_type = DatabaseType::MYSQL;
@@ -36,8 +38,12 @@ $db_config = array(
 // allow loading scripts from different domain
 /* CSP\Parser::add_value(CSP\Element::SCRIPTS, 'domain.com'); */
 
+// allow cross-domain resource sharing
+/* $domain = CORS::add_domain('*'); */
+/* CORS::allow_methods($domain, array('GET')); */
+
 // configure code generation
-$cache_method = Core\Cache\Type::NONE;
+$cache_method = CacheType::NONE;
 $optimize_code = false;
 $include_styles = true;
 $url_rewrite = true;
